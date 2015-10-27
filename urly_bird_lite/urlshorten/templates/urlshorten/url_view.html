@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h3>Bookmarks</h3>
+    {% for url in object_list %}
+        <div>
+            {{ url.url }}
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -6,10 +6,12 @@
     {% for url in object_list %}
         <div>
         <br>
-            <div> {{ url.url }} </div>
+            <div> {{ url.url }}</div>
         </div>
         <div class="list-group">
-        <button type="button"><a href="{{ url.url }}" target="self">{{ url.url }}</a></button>
+        <button type="button"><a href="{{ url.url }}" target="self">{{ url.shortened_url }}</a></button>
+        <br>
+        {{ url.description }}
     {% endfor %}
 {% endblock %}
 

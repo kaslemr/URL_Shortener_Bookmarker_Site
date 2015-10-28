@@ -17,11 +17,9 @@ class UrlCreateView(CreateView):
         model.author = self.request.user
         return super().form_valid(form)
 
-
 class UrlListView(ListView):
     model = URL
     template_name = "urlshorten/url_view.html"
-
 
 class UrlDetailView(DetailView):
     model = URL

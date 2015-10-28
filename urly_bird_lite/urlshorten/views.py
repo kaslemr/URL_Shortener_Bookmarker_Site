@@ -1,3 +1,5 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import View, CreateView, ListView, DetailView, TemplateView
 from urlshorten.models import URL
@@ -18,9 +20,9 @@ class UrlCreateView(CreateView):
         model = form.save(commit=False)
         model.author = self.request.user
         _url = bytes(form.instance.url, 'utf8')
-        m = md5(bytes(_url))
+        m = md5(_url)
         _shortened_url = m.hexdigest()
-        form.instance.shortened_url = "hpz:/" + _shortened_url[:7]
+        form.instance.shortened_url = "hpz" + _shortened_url[:7]
         model.shortened_url = form.instance.shortened_url
         return super().form_valid(form)
 
@@ -31,7 +33,15 @@ class UrlListView(ListView):
     model = URL
     template_name = "urlshorten/url_view.html"
 
-
 class UrlDetailView(DetailView):
     model = URL
+
+class CreateUser(CreateView):
+    model = User
+    form_class = UserCreationForm
+    success_url = "/accounts/profilelogin"
+
+
+
+
 

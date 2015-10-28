@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from urlshorten.views import BaseView, UrlCreateView, UrlListView
+from urlshorten.views import BaseView, UrlCreateView, UrlListView, CreateUser
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/profile', include('django.contrib.auth.urls')),
     url(r'^$', BaseView.as_view(), name='base'),
     url(r'^create/$', UrlCreateView.as_view(), name='url_create'),
     url(r'^user/$', UrlListView.as_view(), name = 'url_view'),
+    url(r'^create/user$', CreateUser.as_view(), name='user_create'),
 
 ]

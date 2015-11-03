@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^create/$', UrlCreateView.as_view(), name='url_create'),
     url(r'^user/$', UrlListView.as_view(), name = 'url_view'),
     url(r'^create/user$', CreateUser.as_view(), name='user_create'),
-
+    url(r'^api/', include('api_framework.urls')),
 ]

@@ -5,7 +5,7 @@ import datetime
 # Create your models here.
 
 class URL(models.Model):
-    author = models.ForeignKey(User)
+    author = models.ForeignKey('auth.User')
     url = models.URLField(max_length=100)
     shortened_url = models.CharField(max_length=50)
     time = models.DateTimeField(default=datetime.datetime.now)

@@ -6,12 +6,17 @@
     {% for url in object_list %}
         <div>
         <br>
-            <div> {{ url.url }} {{ url.author_id }}</div>
+            User: {{ url.author }}
+            <div> {{ url.url }} </div>
         </div>
         <div class="list-group">
         <button type="button"><a href="{{ url.url }}" target="self">{{ url.shortened_url }}</a></button>
-        <br>
+        <br>Description:<br>
+        {% if url.description %}
         {{ url.description }}
+            {% else %}
+            None
+        {% endif %}
     {% endfor %}
 {% endblock %}
 

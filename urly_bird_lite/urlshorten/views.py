@@ -33,6 +33,9 @@ class UrlListView(ListView):
     model = URL
     template_name = "urlshorten/url_view.html"
 
+    class Meta:
+        ordering = ('-datetime')
+
 
 class UrlUserList(ListView):
     model = URL

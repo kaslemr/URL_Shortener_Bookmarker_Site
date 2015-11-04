@@ -9,7 +9,7 @@ class URL(models.Model):
     url = models.URLField(max_length=100)
     shortened_url = models.CharField(max_length=50)
     time = models.DateTimeField(default=datetime.datetime.now)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
 
     class Meta:
         ordering = ['-time']

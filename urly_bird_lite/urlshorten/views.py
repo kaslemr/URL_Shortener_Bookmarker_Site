@@ -33,8 +33,14 @@ class UrlListView(ListView):
     model = URL
     template_name = "urlshorten/url_view.html"
 
-class UrlDetailView(DetailView):
+
+class UrlUserList(ListView):
     model = URL
+    template_name = "urlshorten/url_list.html"
+
+    def get_queryset(self):
+        user = self.kwargs.get('pk')
+        return self.model.objects.filter(author__id=user)
 
 class CreateUser(CreateView):
     model = User

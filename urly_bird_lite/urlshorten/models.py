@@ -14,6 +14,12 @@ class URL(models.Model):
     class Meta:
         ordering = ['-time']
 
+class ClickCount(models.Model):
+    user = models.ForeignKey(User)
+    timestamp = models.DateTimeField(default=datetime.datetime.now)
+    url = models.ForeignKey(URL)
+
+
 
 
 

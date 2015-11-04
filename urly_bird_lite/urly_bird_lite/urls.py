@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from urlshorten.views import BaseView, UrlCreateView, UrlListView, CreateUser
+from urlshorten.views import BaseView, UrlCreateView, UrlListView, CreateUser, UrlUserList
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^$', BaseView.as_view(), name='base'),
     url(r'^create/$', UrlCreateView.as_view(), name='url_create'),
     url(r'^user/$', UrlListView.as_view(), name = 'url_view'),
+    url(r'^userlist/(?P<pk>\d+)/', UrlUserList.as_view(), name = 'user_list'),
     url(r'^create/user$', CreateUser.as_view(), name='user_create'),
     url(r'^api/', include('api_framework.urls')),
 ]

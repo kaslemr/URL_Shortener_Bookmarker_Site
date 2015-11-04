@@ -14,9 +14,10 @@
           <li><a href="{% url 'user_create' %}">Create Account</a></li>
         <li><a href="{% url 'url_create' %}">Create Bookmark</a></li>
           {% if not request.user.id %}
-              <li><a href="{% url 'login' %}">Log In</a></li>\
+              <li><a href="{% url 'login' %}">Log In</a></li>
           {% else %}
-              <li><a href="{% url 'url_view' %}">See Bookmarks</a></li>
+              <li><a href="{% url 'user_list' user.id %}">See Your Bookmarks</a></li>
+              <li><a href="{% url 'url_view' %}">See All Bookmarks</a></li>
               <li><a href="{% url 'logout' %}?next=/">Logout</a></li>
           {% endif %}
       </ul>

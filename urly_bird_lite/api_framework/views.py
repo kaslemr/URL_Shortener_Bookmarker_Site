@@ -15,11 +15,15 @@ class UrlSerializer(ModelSerializer):
 
     class Meta:
         model = URL
-        fields = ('id', 'url', 'description')
+        fields = ('id', 'url', 'description', 'shortened_url')
 
 class UrlListView(ListCreateAPIView):
     queryset = URL.objects.all()
     serializer_class = UrlSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return URL.objects.filter(author=user)
 
 
 class UrlDetailView(RetrieveUpdateDestroyAPIView):

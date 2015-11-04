@@ -21,9 +21,9 @@ class UrlListView(ListCreateAPIView):
     queryset = URL.objects.all()
     serializer_class = UrlSerializer
 
-    def get_queryset(self):
-        user = self.request.user
-        return URL.objects.filter(author=user)
+    #def get_queryset(self):
+        #user = self.request.user
+        #return URL.objects.filter(author__id=user)
 
 
 class UrlDetailView(RetrieveUpdateDestroyAPIView):
